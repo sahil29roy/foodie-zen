@@ -6,28 +6,31 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    // 1. Must bind to 0.0.0.0 on Render
-    host: '0.0.0.0', 
+    host: "0.0.0.0",
     port: 8080,
-    // 2. THIS IS THE CRUCIAL FIX FOR THE "BLOCKED REQUEST" ERROR
     allowedHosts: [
-      'foodie-zen.onrender.com', 
-      'localhost', 
-      '127.0.0.1', 
+      "foodie-zen.onrender.com",
+      ".onrender.com", // allow any onrender subdomain
+      "localhost",
+      "127.0.0.1",
     ],
   },
-  
-  // Keep the 'preview' block for future production use
+
   preview: {
-    host: '0.0.0.0',
-    port: 4173,
+    host: "0.0.0.0",
+    port: 8080,
+    // Two safe options: list hosts (preferred) or set `allowedHosts: true` to disable checking
     allowedHosts: [
-      'foodie-zen.onrender.com', 
-      'localhost', 
-    ], 
+      "foodie-zen.onrender.com",
+      ".onrender.com",
+      "localhost",
+      "127.0.0.1",
+    ],
+    // If you still hit host blocks, change the above to: allowedHosts: true,
   },
-  
+
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
