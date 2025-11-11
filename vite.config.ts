@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
-    // 1. MUST bind to 0.0.0.0 on Render for external access
+    // 1. Must bind to 0.0.0.0 on Render
     host: '0.0.0.0', 
     port: 8080,
     // 2. THIS IS THE CRUCIAL FIX FOR THE "BLOCKED REQUEST" ERROR
@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
     ],
   },
   
-  // Keep the 'preview' block if you ever switch to the recommended production server
+  // Keep the 'preview' block for future production use
   preview: {
     host: '0.0.0.0',
     port: 4173,
