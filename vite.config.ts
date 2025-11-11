@@ -5,23 +5,25 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // The 'server' block is for local development
   server: {
-    // Render typically needs the server to listen on all network interfaces
-    host: '0.0.0.0', 
-    // Render provides the PORT as an environment variable
-    port: Number(process.env.PORT) || 8080, 
-    // You can remove the allowedHosts if 0.0.0.0 fix works, but adding it doesn't hurt.
+    host: '0.0.0.0', // Bind to all interfaces locally for better compatibility
+    port: 8080,
   },
   
-  // ADD THIS BLOCK
+  // The 'preview' block is used by 'bun run preview' (your Start Command)
   preview: {
-    host: '0.0.0.0', // Ensure preview server also binds to 0.0.0.0
-    port: Number(process.env.PORT) || 4173, // Default Vite preview port is 4173
-    // Explicitly allow the domain, though 0.0.0.0 often makes this redundant.
-    allowedHosts: ['foodie-zen.onrender.com', 'localhost', '127.0.0.1'], 
+    // 1. Tell the server to listen on all public network interfaces
+    host: '0.0.0.0',
+    // 2. Set an explicit port
+    port: 4173,
+    // 3. Explicitly allow the domain that was blocked
+    allowedHosts: [
+      'foodie-zen.onrender.com', 
+      'localhost', 
+    ], 
   },
-  // END OF ADDED BLOCK
-
+  
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {
