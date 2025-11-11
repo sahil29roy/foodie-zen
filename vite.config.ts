@@ -5,22 +5,23 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // The 'server' block is for local development
   server: {
-    host: '0.0.0.0', // Bind to all interfaces locally for better compatibility
+    // Crucial for Render to bind correctly
+    host: '0.0.0.0', 
     port: 8080,
   },
   
-  // The 'preview' block is used by 'bun run preview' (your Start Command)
+  // THIS IS THE BLOCK THAT FIXES THE "BLOCKED REQUEST" ERROR
   preview: {
-    // 1. Tell the server to listen on all public network interfaces
+    // Must listen on 0.0.0.0 to accept external requests on Render
     host: '0.0.0.0',
-    // 2. Set an explicit port
+    // Set a port, Render will typically overwrite this via the $PORT env var
     port: 4173,
-    // 3. Explicitly allow the domain that was blocked
+    // Explicitly allow the blocked domain, plus local testing hosts
     allowedHosts: [
       'foodie-zen.onrender.com', 
       'localhost', 
+      '127.0.0.1', 
     ], 
   },
   
