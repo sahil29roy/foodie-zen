@@ -10,6 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { IssueReportModal } from "@/components/IssueReportModal";
 
 interface NavbarProps {
   user: any;
@@ -66,6 +67,7 @@ export const Navbar = ({ user, cartItemsCount }: NavbarProps) => {
                     )}
                   </Button>
                 </Link>
+                <IssueReportModal />
               </>
             )}
 
@@ -125,6 +127,9 @@ export const Navbar = ({ user, cartItemsCount }: NavbarProps) => {
                 >
                   Cart ({cartItemsCount})
                 </Link>
+                <div onClick={() => setMobileMenuOpen(false)}>
+                  <IssueReportModal />
+                </div>
               </>
             )}
             {user ? (
