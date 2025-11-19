@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { RestaurantCard } from "@/components/RestaurantCard";
 import { ChatBot } from "@/components/ChatBot";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const [user, setUser] = useState<any>(null);
@@ -78,6 +79,7 @@ const Index = () => {
       </div>
 
       <ChatBot />
+      <Footer />
     </div>
   );
 };

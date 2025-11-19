@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Clock, DollarSign, Plus, Minus, ShoppingCart } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 interface MenuItem {
   id: string;
@@ -292,6 +293,7 @@ const Restaurant = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Navbar } from "@/components/Navbar";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Footer } from "@/components/Footer";
 
 interface CartItem {
   id: string;
@@ -362,6 +363,7 @@ const Cart = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

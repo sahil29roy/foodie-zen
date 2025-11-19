@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, MapPin, Package } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { useToast } from "@/hooks/use-toast";
+import { Footer } from "@/components/Footer";
 
 interface Order {
   id: string;
@@ -196,6 +197,7 @@ const Orders = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };
